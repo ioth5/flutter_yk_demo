@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
       child: TextField(
         controller: phoneEditer,
         keyboardType: TextInputType.phone,
-        style: TextStyle(fontSize: 14, color: SQColor.darkGray),
+        style: TextStyle(fontSize: 14, color: SQColor.red),
         decoration: InputDecoration(
           labelText: '请输入手机号',
           hintStyle: TextStyle(color: SQColor.gray),
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
             child: TextField(
               controller: codeEditer,
               keyboardType: TextInputType.phone,
-              style: TextStyle(fontSize: 14, color: SQColor.darkGray),
+              style: TextStyle(fontSize: 14, color: SQColor.red),
               decoration: InputDecoration(
                 hintText: '请输入短信验证码',
                 hintStyle: TextStyle(color: SQColor.gray),

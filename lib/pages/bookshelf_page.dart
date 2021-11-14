@@ -61,12 +61,14 @@ class BookshelfState extends State<BookshelfPage> with RouteAware {
       Container(
         height: kToolbarHeight,
         width: 44,
-        child: Image.asset('assets/images/find_search.png', color: iconColor),
+        child: Image.asset(Constant.ASSETS_IMG + 'find_search.png',
+            color: iconColor),
       ),
       Container(
         height: kToolbarHeight,
         width: 44,
-        child: Image.asset('assets/images/find_topic2.png', color: iconColor),
+        child: Image.asset(Constant.ASSETS_IMG + 'find_topic2.png',
+            color: iconColor),
       ),
       SizedBox(width: 15)
     ]);
@@ -122,7 +124,7 @@ class BookshelfState extends State<BookshelfPage> with RouteAware {
         color: SQColor.paper,
         width: width,
         height: width / 0.75,
-        child: Image.asset('img/bookshelf_add.png'),
+        child: Image.asset(Constant.ASSETS_IMG + 'bookshelf_add.png'),
       ),
     ));
     return Container(

@@ -48,24 +48,24 @@ class _IndexPageState extends State<IndexPage> {
   void initData() {
     tabImages = [
       [
-        getTabImage('assets/images/tabbar_home_n.png'),
-        getTabImage('assets/images/tabbar_home.png')
+        getTabImage(Constant.ASSETS_IMG + 'tabbar_home_n.png'),
+        getTabImage(Constant.ASSETS_IMG + 'tabbar_home.png')
       ],
       [
-        getTabImage('assets/images/tabbar_shelf_n.png'),
-        getTabImage('assets/images/tabbar_shelf.png')
+        getTabImage(Constant.ASSETS_IMG + 'tabbar_shelf_n.png'),
+        getTabImage(Constant.ASSETS_IMG + 'tabbar_shelf.png')
       ],
       [
-        getTabImage('assets/images/tabbar_write_sel_n.png'),
-        getTabImage('assets/images/tabbar_write_sel.png')
+        getTabImage(Constant.ASSETS_IMG + 'tabbar_write_sel_n.png'),
+        getTabImage(Constant.ASSETS_IMG + 'tabbar_write_sel.png')
       ],
       [
-        getTabImage('assets/images/tabbar_circle_n.png'),
-        getTabImage('assets/images/tabbar_circle.png')
+        getTabImage(Constant.ASSETS_IMG + 'tabbar_circle_n.png'),
+        getTabImage(Constant.ASSETS_IMG + 'tabbar_circle.png')
       ],
       [
-        getTabImage('assets/images/tabbar_my_n.png'),
-        getTabImage('assets/images/tabbar_my.png')
+        getTabImage(Constant.ASSETS_IMG + 'tabbar_my_n.png'),
+        getTabImage(Constant.ASSETS_IMG + 'tabbar_my.png')
       ],
     ];
   }

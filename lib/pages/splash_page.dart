@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:yk_demo/constant/constant.dart';
 import 'package:yk_demo/routers/routers.dart';
 import 'package:yk_demo/util/sp_util.dart';
-import 'package:yk_demo/util/user_util.dart';
 
 class SplashPage extends StatefulWidget {
   SplashPage({Key key}) : super(key: key);
