@@ -59,7 +59,7 @@ class MeHeader extends StatelessWidget {
             color: Colors.white,
             image: DecorationImage(
                 image: AssetImage(
-                    'assets/images/personal_chongzhi_background.png'),
+                    Constant.ASSETS_IMG + 'personal_chongzhi_background.png'),
                 fit: BoxFit.fill),
           ),
           alignment: Alignment.center,

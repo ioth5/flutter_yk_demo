@@ -23,7 +23,6 @@ class _DispatchPageState extends State<DispatchPage> {
           Text("我是文本8"),
           Text("我是文本9"),
         ],
-        //  modules.map((info) => getItemContainer(info)).toList(),
       ),
     );
   }

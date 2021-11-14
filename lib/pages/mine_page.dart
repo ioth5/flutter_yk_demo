@@ -62,10 +62,10 @@ class _MinePageState extends State<MinePage> {
       List moduleData = responseJson['data'];
       title0 = responseJson['title0'];
       title1 = responseJson['title1'];
-      List<MineModel> modules0 = (moduleData0 as List<dynamic>)
+      List<MineModel> modules0 = (moduleData0)
           .map((e) => MineModel.fromJson((e as Map<String, dynamic>)))
           .toList();
-      List<MineModel> modules1 = (moduleData as List<dynamic>)
+      List<MineModel> modules1 = (moduleData)
           .map((e) => MineModel.fromJson((e as Map<String, dynamic>)))
           .toList();
       setState(() {
