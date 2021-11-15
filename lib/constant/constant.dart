@@ -1,8 +1,8 @@
 import 'package:event_bus/event_bus.dart';
 
 class Constant {
-  static const baseUrl = 'http://212.64.95.5:8080/hrlweibo/';
-  // static const baseUrl = '`http://dev_xyxxcx.sanguosha.com/api/v1';
+  static const baseUrl = 'http://100.fantangxs.com/';
+  // static const baseUrl = 'http://100.dev.fantangxs.com/';
 
   static const String ASSETS_IMG = 'assets/images/';
 

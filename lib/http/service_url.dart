@@ -3,11 +3,12 @@ import 'package:yk_demo/constant/constant.dart';
 class ServiceUrl {
   // 请求成功
   static const API_CODE_SUCCESS = "200";
-  static String getWeiBo =
-      Constant.baseUrl + 'manage/hrlweibo/list.do'; // 获取首页微博列表
+  static String dailyNovel = Constant.baseUrl + 'api/v1/dailyNovel'; // 每日小说推荐
+  static String bookShelfs =
+      Constant.baseUrl + 'api/v1/bookShelfs'; // 获取用户收藏的小说列表
+
+  /// ------------------------------- old -----------------------------
   static String login = Constant.baseUrl + 'manage/hrluser/login.do'; // 登录
-  static String getVedioCategory =
-      Constant.baseUrl + 'manage/hrlvedio/list.do'; // 获取视频分类
   static String feedback =
       Constant.baseUrl + 'manage/hrluser/uploadfile.do'; // 意见反馈
   static String updateHead =

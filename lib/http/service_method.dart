@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'dart:io';
-
 import 'package:dio/dio.dart';
+import 'package:uuid/uuid.dart';
 import 'package:yk_demo/public.dart';
 
 class DioManager {
@@ -18,12 +18,20 @@ class DioManager {
     return _instance;
   }
 
+  /// 自定义Header
+  Map<String, dynamic> httpHeaders = {
+    'Accept': 'application/json,*/*',
+    'Content-Type': 'application/json',
+    'uuid': Uuid().v4() + "",
+  };
+
   Dio dio = new Dio();
 
   DioManager() {
     dio.options.baseUrl = Constant.baseUrl;
     dio.options.connectTimeout = 5000;
     dio.options.receiveTimeout = 3000;
+    dio.options.headers = httpHeaders;
     dio.interceptors.add(LogInterceptor(responseBody: true)); //是否开启请求日志
     //  dio.interceptors.add(CookieManager(CookieJar()));//缓存相关类，具体设置见https://github.com/flutterchina/cookie_jar
   }

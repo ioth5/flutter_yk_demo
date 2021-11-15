@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:yk_demo/model/novel.dart';
 import 'package:yk_demo/public.dart';
@@ -24,14 +25,16 @@ class BookshelfState extends State<BookshelfPage> with RouteAware {
 
   Future<void> fetchData() async {
     try {
-      List<Novel> favoriteNovels = [];
-      List<dynamic> favoriteResponse = [];
-      favoriteResponse.forEach((data) {
-        favoriteNovels.add(Novel.fromJson(data));
+      FormData formData = FormData.fromMap({
+        "pageNum": "1",
       });
-
-      setState(() {
-        this.favoriteNovels = favoriteNovels;
+      DioManager.getInstance().get(ServiceUrl.dailyNovel, formData, (data) {
+        print("接口异常：" + data);
+        setState(() {});
+      }, (error) {
+        print("接口异常：" + error);
+        //  ToastUtil.show(error);
+        setState(() {});
       });
     } catch (e) {
       Toast.show(e.toString());
@@ -165,9 +168,9 @@ class BookshelfState extends State<BookshelfPage> with RouteAware {
             SizedBox(height: 12),
             Column(
               children: <Widget>[
-                Divider(height: 1),
+                // Divider(height: 1),
                 Container(
-                  height: 50,
+                  // height: 40,
                   child: Row(
                     children: <Widget>[
                       Image.asset(
