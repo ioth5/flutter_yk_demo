@@ -101,7 +101,7 @@ class DioManager {
 
     String dataStr = json.encode(response.data);
     Map<String, dynamic> dataMap = json.decode(dataStr);
-    if (dataMap == null || dataMap['status'] != 200) {
+    if (dataMap == null || dataMap['code'] != 0) {
       _error(errorCallBack, dataMap['msg'].toString());
     } else if (successCallBack != null) {
       successCallBack(dataMap);

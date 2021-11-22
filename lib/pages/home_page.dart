@@ -20,7 +20,7 @@ class HomePageState extends State<HomePage> {
               labelColor: SQColor.darkGray,
               labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               unselectedLabelColor: SQColor.gray,
-              indicatorColor: SQColor.secondary,
+              indicatorColor: Color.fromRGBO(253, 120, 150, 1),
               indicatorSize: TabBarIndicatorSize.label,
               indicatorWeight: 3,
               indicatorPadding: EdgeInsets.fromLTRB(8, 0, 8, 5),

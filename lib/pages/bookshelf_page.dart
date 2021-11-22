@@ -12,7 +12,7 @@ class BookshelfPage extends StatefulWidget {
   State<StatefulWidget> createState() => BookshelfState();
 }
 
-class BookshelfState extends State<BookshelfPage> with RouteAware {
+class BookshelfState extends State<BookshelfPage> {
   List<Novel> favoriteNovels = [];
   ScrollController scrollController = ScrollController();
   double navAlpha = 1;
