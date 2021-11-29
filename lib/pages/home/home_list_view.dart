@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yk_demo/pages/home/home_banner.dart';
 import 'package:dio/dio.dart';
+import 'package:yk_demo/pages/home/home_menu.dart';
 import 'package:yk_demo/public.dart';
 import 'package:yk_demo/util/toast.dart';
 
@@ -14,9 +15,9 @@ enum HomeListType {
 }
 
 class HomeListView extends StatefulWidget {
-  final HomeListType type;
-
   HomeListView(this.type);
+
+  final HomeListType type;
 
   @override
   State<StatefulWidget> createState() {
@@ -26,9 +27,10 @@ class HomeListView extends StatefulWidget {
 
 class HomeListViewState extends State<HomeListView>
     with AutomaticKeepAliveClientMixin {
-  List<CarouselInfo> carouselInfos = [];
+  List<BannerInfo> banner = [];
+  HomeModule homeModule;
+  List<MenuInfo> menus = [];
   int pageIndex = 1;
-  List<HomeModule> modules = [];
 
   @override
   void initState() {
@@ -61,15 +63,49 @@ class HomeListViewState extends State<HomeListView>
       FormData formData = FormData.fromMap({"sex": 0});
       DioManager.getInstance().get(ServiceUrl.indexV2, formData, (data) {
         var responseJson = data;
-        List moduleData = responseJson['data'];
-        List<HomeModule> modules = [];
-        moduleData.forEach((data) {
-          modules.add(HomeModule.fromJson(data));
+        var moduleData = responseJson['data'];
+        // 处理 banner 数据
+        var banners = moduleData['banners'];
+        List<BannerInfo> banner = [];
+
+        banners.forEach((data) {
+          banner.add(BannerInfo.fromJson(data));
+        });
+        // icons
+        var menu = [
+          {
+            "icon": Constant.ASSETS_IMG + "biaoqian.png",
+            "title": '标签找书',
+            "r": 93,
+            "g": 163,
+            "b": 243,
+          },
+          {
+            "icon": Constant.ASSETS_IMG + "hongbao.png",
+            "title": '排行榜',
+            "r": 255,
+            "g": 142,
+            "b": 96
+          },
+          {
+            "icon": Constant.ASSETS_IMG + "paihang.png",
+            "title": '红包广场',
+            "r": 242,
+            "g": 106,
+            "b": 130
+          },
+        ];
+
+        List<MenuInfo> menus = [];
+        menu.forEach((data) {
+          menus.add(MenuInfo.fromJson(data));
         });
 
         setState(() {
-          this.modules = modules;
-          this.carouselInfos = carouselInfos;
+          this.homeModule = HomeModule.fromJson(moduleData);
+
+          this.banner = banner;
+          this.menus = menus;
         });
       }, (error) {
         print("接口异常：" + error);
@@ -81,25 +117,21 @@ class HomeListViewState extends State<HomeListView>
     }
   }
 
-  Widget buildModule(BuildContext context, HomeModule module) {
-    if (module.carousels != null) {
-      return HomeBanner(module.carousels);
-    }
-
-    return Container();
-  }
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    if (banner == null) {
+      return Container();
+    }
     return Container(
       child: RefreshIndicator(
         onRefresh: fetchData,
-        child: ListView.builder(
-          itemCount: modules.length,
-          itemBuilder: (BuildContext context, int index) {
-            return buildModule(context, modules[index]);
-          },
+        child: ListView(
+          padding: EdgeInsets.only(top: 0),
+          children: <Widget>[
+            HomeBanner(banner),
+            HomeMenu(menus),
+          ],
         ),
       ),
     );

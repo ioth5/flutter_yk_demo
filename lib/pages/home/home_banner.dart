@@ -5,35 +5,40 @@ import 'package:yk_demo/public.dart';
 import 'home_model.dart';
 
 class HomeBanner extends StatelessWidget {
-  final List<CarouselInfo> carouselInfos;
+  final List<BannerInfo> banner;
 
-  HomeBanner(this.carouselInfos);
+  HomeBanner(this.banner);
 
   @override
   Widget build(BuildContext context) {
-    if (carouselInfos.length == 0) {
+    if (banner.length == 0) {
       return SizedBox();
     }
 
     return Container(
       color: Colors.white,
+      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: CarouselSlider(
-        items: carouselInfos.map((info) {
+        items: banner.map((info) {
           return Builder(
             builder: (BuildContext context) {
               return Container(
                 width: Screen.width,
                 margin: EdgeInsets.symmetric(horizontal: 5.0),
-                child: Image.network(
-                  info.imageUrl ?? '',
-                  fit: BoxFit.cover,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(7),
+                  child: Image.network(
+                    info.pic_url ?? '',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               );
             },
           );
         }).toList(),
         options: CarouselOptions(
-          aspectRatio: 2,
+          // aspectRatio: 2,
+          viewportFraction: 1,
           height: 173,
           autoPlay: true,
         ),
