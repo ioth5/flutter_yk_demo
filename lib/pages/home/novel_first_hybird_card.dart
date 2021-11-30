@@ -30,6 +30,7 @@ class NovelFirstHybirdCard extends StatelessWidget {
           HomeSectionView(recmds.name),
           NovelCell(recmd[0]),
           SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
             scrollDirection: Axis.horizontal,
             child: Row(children: children),
