@@ -9,6 +9,9 @@ class ServiceUrl {
 
   static String indexV2 = Constant.baseUrl + 'api/v3/index'; // 获取首页数据
 
+  static String banners = Constant.baseUrl + 'api/v1/banners'; // 甜甜圈banner数据
+  static String forumPosts = Constant.baseUrl + 'api/v1/forumPosts'; // 甜甜圈列表数据
+
   /// ------------------------------- old -----------------------------
   static String login = Constant.baseUrl + 'manage/hrluser/login.do'; // 登录
 

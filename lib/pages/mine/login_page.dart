@@ -81,9 +81,11 @@ class _LoginPageState extends State<LoginPage> {
       child: TextField(
         controller: phoneEditer,
         keyboardType: TextInputType.phone,
+        cursorColor: SQColor.gray,
         style: TextStyle(fontSize: 14, color: SQColor.red),
         decoration: InputDecoration(
           labelText: '请输入手机号',
+          labelStyle: TextStyle(color: SQColor.gray),
           hintStyle: TextStyle(color: SQColor.gray),
           border: InputBorder.none,
         ),
@@ -104,9 +106,11 @@ class _LoginPageState extends State<LoginPage> {
             child: TextField(
               controller: codeEditer,
               keyboardType: TextInputType.phone,
+              cursorColor: SQColor.gray,
               style: TextStyle(fontSize: 14, color: SQColor.red),
               decoration: InputDecoration(
                 hintText: '请输入短信验证码',
+                labelStyle: TextStyle(color: SQColor.gray),
                 hintStyle: TextStyle(color: SQColor.gray),
                 border: InputBorder.none,
               ),
@@ -126,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
     var container = Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5.0),
-        color: SQColor.primary,
+        color: Color.fromRGBO(253, 120, 150, 1),
       ),
       height: 40.0,
       child: TextButton(
@@ -166,6 +170,18 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: Text('登录'),
         elevation: 0.0,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Color.fromRGBO(253, 120, 150, 1),
+              Color.fromRGBO(235, 129, 181, 1),
+            ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+          ),
+        ),
+        titleTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+        ),
       ),
       backgroundColor: Colors.white,
       body: buildBody(),

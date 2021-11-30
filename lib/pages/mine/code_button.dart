@@ -15,7 +15,8 @@ class CodeButton extends StatelessWidget {
         child: Center(
           child: Text(
             '${coldDownSeconds}s',
-            style: TextStyle(fontSize: 14, color: SQColor.primary),
+            style: TextStyle(
+                fontSize: 14, color: Color.fromRGBO(253, 120, 150, 1)),
           ),
         ),
       );
@@ -30,7 +31,7 @@ class CodeButton extends StatelessWidget {
             style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.normal,
-                color: SQColor.primary)),
+                color: Color.fromRGBO(253, 120, 150, 1))),
       ),
     );
   }

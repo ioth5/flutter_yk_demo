@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yk_demo/pages/mine/login_page.dart';
 
 class DispatchPage extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class DispatchPage extends StatefulWidget {
 class _DispatchPageState extends State<DispatchPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: LoginPage(),
+    );
   }
 }

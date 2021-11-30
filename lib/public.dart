@@ -2,6 +2,7 @@ export 'dart:async';
 export 'dart:convert';
 export 'dart:io';
 export 'package:fluro/fluro.dart';
+
 export 'package:yk_demo/constant/constant.dart';
 export 'package:yk_demo/event/ChangeInfoEvent.dart';
 export 'package:yk_demo/http/service_method.dart';
