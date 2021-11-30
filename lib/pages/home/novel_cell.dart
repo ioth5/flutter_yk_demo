@@ -19,8 +19,8 @@ class NovelCell extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            NovelCoverImage(recmdsData.cover, width: 70, height: 93),
-            SizedBox(width: 15),
+            NovelCoverImage(recmdsData.cover, width: 80, height: 106),
+            SizedBox(width: 16),
             Expanded(
               child: buildRight(),
             ),
@@ -36,48 +36,61 @@ class NovelCell extends StatelessWidget {
       children: <Widget>[
         Text(
           recmdsData.title,
-          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Color.fromRGBO(51, 51, 51, 1),
+          ),
         ),
+        SizedBox(height: 0),
+        buildTags(),
         SizedBox(height: 5),
         Text(
           recmdsData.desc,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            fontSize: 14,
-            color: SQColor.gray,
-          ),
+          style: TextStyle(fontSize: 13, color: SQColor.gray),
         ),
-        SizedBox(height: 5),
-        Row(
-          children: <Widget>[
-            Text(
-              recmdsData.author_name,
-              style: TextStyle(fontSize: 14, color: SQColor.gray),
-            ),
-            Expanded(child: Container()),
-            // buildTag(novel.status, novel.statusColor()),
-            SizedBox(width: 5),
-            // buildTag(novel.type, SQColor.gray),
-          ],
-        )
       ],
     );
   }
 
-  Widget buildTag(String title, Color color) {
+  Widget buildTags() {
+    var tags = recmdsData.tags;
+
+    if (tags.length == 0) {
+      return Container();
+    }
+
+    List<TagInfo> tag = [];
+    tags.forEach((novel) {
+      tag.add(TagInfo.fromJson(novel));
+    });
+
+    var tagWidgets = tag.map((tag) {
+      var tagWidget = Container(
+        decoration: BoxDecoration(
+          border:
+              Border.all(color: Color.fromRGBO(253, 120, 150, 1), width: 0.5),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        padding: EdgeInsets.fromLTRB(6, 0, 6, 0),
+        child: Text(
+          tag.name,
+          style: TextStyle(
+            fontSize: 12,
+            color: Color.fromRGBO(253, 120, 150, 1),
+          ),
+        ),
+      );
+      return tagWidget;
+    }).toList();
     return Container(
-      padding: EdgeInsets.fromLTRB(5, 2, 5, 3),
-      decoration: BoxDecoration(
-        border: Border.all(
-            color: Color.fromARGB(99, color.red, color.green, color.blue),
-            width: 0.5),
-        borderRadius: BorderRadius.circular(3),
-      ),
-      child: Text(
-        title,
-        style: TextStyle(fontSize: 11, color: color),
-      ),
+      padding: EdgeInsets.fromLTRB(0, 15, 15, 15),
+      color: SQColor.white,
+      child: Wrap(runSpacing: 10, spacing: 10, children: tagWidgets),
     );
   }
 }

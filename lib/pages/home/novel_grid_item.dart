@@ -22,8 +22,8 @@ class NovelGridItem extends StatelessWidget {
           children: <Widget>[
             NovelCoverImage(
               recmdsData.cover,
-              width: 50,
-              height: 60,
+              width: 40,
+              height: 53,
             ),
             SizedBox(width: 10),
             Expanded(
@@ -35,8 +35,8 @@ class NovelGridItem extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 16,
-                      height: 0.9,
+                      fontSize: 14,
+                      height: 1.4,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -118,18 +118,19 @@ class HomeListViewState extends State<HomeListView>
     Widget card;
     switch (recmds.style_type) {
       case 1:
-        card = NovelNormalCard(recmds);
-        // card = NovelFirstHybirdCard(recmds);
-        // card = NovelFourGridView(recmds);
+        card = NovelFirstHybirdCard(recmds);
         break;
       case 2:
         card = NovelSecondHybirdCard(recmds);
         break;
       case 3:
-        // card = NovelFirstHybirdCard(recmds);
+        card = NovelNormalCard(recmds);
         break;
       case 4:
-        // card = NovelNormalCard(recmds);
+        card = NovelNormalCard(recmds);
+        break;
+      case 5:
+        card = NovelFourGridView(recmds);
         break;
     }
     return card;

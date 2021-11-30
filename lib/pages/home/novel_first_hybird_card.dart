@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home_scroll_view.dart';
 import 'novel_cell.dart';
-import 'novel_grid_item.dart';
 import 'home_section_view.dart';
 import 'home_model.dart';
 
@@ -20,7 +20,7 @@ class NovelFirstHybirdCard extends StatelessWidget {
     List<Widget> children = [];
     var bottomNovels = recmd.sublist(1);
     bottomNovels.forEach((novel) {
-      children.add(NovelGridItem(novel));
+      children.add(HomeScrollView(novel));
     });
 
     return Container(
@@ -29,9 +29,11 @@ class NovelFirstHybirdCard extends StatelessWidget {
         children: <Widget>[
           HomeSectionView(recmds.name),
           NovelCell(recmd[0]),
-          Container(
+          SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
-            child: Wrap(spacing: 15, runSpacing: 15, children: children),
+            scrollDirection: Axis.horizontal,
+            child: Row(children: children),
+            // child: Wrap(spacing: 15, runSpacing: 15, children: children),
           ),
           Container(
             height: 10,

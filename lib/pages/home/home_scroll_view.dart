@@ -4,9 +4,9 @@ import 'package:yk_demo/pages/home/home_model.dart';
 import 'package:yk_demo/public.dart';
 import 'package:yk_demo/widget/novel_cover_image.dart';
 
-class HomeNovelCoverView extends StatelessWidget {
+class HomeScrollView extends StatelessWidget {
   final RecmdsData recmdsData;
-  HomeNovelCoverView(this.recmdsData);
+  HomeScrollView(this.recmdsData);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class HomeNovelCoverView extends StatelessWidget {
       },
       child: Container(
         width: width,
-        // margin: const EdgeInsets.only(right: 8),
+        margin: const EdgeInsets.only(right: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

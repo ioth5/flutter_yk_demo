@@ -7,7 +7,7 @@ class ServiceUrl {
   static String bookShelfs =
       Constant.baseUrl + 'api/v1/bookShelfs'; // 获取用户收藏的小说列表
 
-  static String indexV2 = Constant.baseUrl + 'api/v2/index'; // 获取首页数据
+  static String indexV2 = Constant.baseUrl + 'api/v3/index'; // 获取首页数据
 
   /// ------------------------------- old -----------------------------
   static String login = Constant.baseUrl + 'manage/hrluser/login.do'; // 登录

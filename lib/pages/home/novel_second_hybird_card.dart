@@ -17,13 +17,13 @@ class NovelSecondHybirdCard extends StatelessWidget {
       return Container();
     }
 
-    // var topNovels = recmd;
+    var topNovels = recmd.sublist(0, 4);
     List<Widget> children = [];
-    // topNovels.forEach((novel) {
-    //   children.add(HomeNovelCoverView(novel));
-    // });
+    topNovels.forEach((novel) {
+      children.add(HomeNovelCoverView(novel));
+    });
 
-    var bottomNovels = recmd;
+    var bottomNovels = recmd.sublist(4);
     bottomNovels.forEach((novel) {
       children.add(NovelGridItem(novel));
     });

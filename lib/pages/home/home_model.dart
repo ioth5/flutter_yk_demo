@@ -58,6 +58,7 @@ class MenuInfo {
 }
 
 class Recmds {
+  int recmd_id;
   String name;
   int style_type;
   List data;
@@ -65,6 +66,7 @@ class Recmds {
   List<RecmdsData> recmdsData;
 
   Recmds.fromJson(Map res) {
+    recmd_id = res['recmd_id'];
     name = res['name'];
     style_type = res['style_type'];
     data = res['data'];
@@ -82,7 +84,7 @@ class RecmdsData {
   int pcid;
   int novel_id;
   int sort;
-  int sex;
+  // int sex;
   String title;
   String cover;
   String introduction;
@@ -90,7 +92,7 @@ class RecmdsData {
   int is_end;
   int length;
   int view_number;
-  List tag;
+  List tags;
   String tag_name;
   String author_name;
   String desc;
@@ -99,13 +101,15 @@ class RecmdsData {
   int flyleaf;
   int user_read_order;
 
+  List<TagInfo> tagInfo;
+
   RecmdsData.fromJson(Map data) {
     id = data['id'];
     recmd_id = data['recmd_id'];
     pcid = data['pcid'];
     novel_id = data['novel_id'];
     sort = data['sort'];
-    sex = data['sex'];
+    // sex = data['sex'];
     title = data['title'];
     cover = data['cover'];
     introduction = data['introduction'];
@@ -114,12 +118,36 @@ class RecmdsData {
     length = data['length'];
     view_number = data['view_number'];
     desc = data['desc'];
-    tag = data['tag'];
+    tags = data['tags'];
+
+    tagInfo = [];
+    if (tags.length != 0) {
+      tags.forEach((t) {
+        tagInfo.add(TagInfo.fromJson(t));
+      });
+    }
+
     tag_name = data['tag_name'];
     author_name = data['author_name'];
     score = data['score'];
     hot_num = data['hot_num'];
     flyleaf = data['flyleaf'];
     user_read_order = data['user_read_order'];
+  }
+}
+
+class TagInfo {
+  int id;
+  int parent_id;
+  String name;
+  int order;
+  int category_id;
+
+  TagInfo.fromJson(Map data) {
+    id = data['id'];
+    parent_id = data['parent_id'];
+    name = data['name'];
+    order = data['order'];
+    category_id = data['category_id'];
   }
 }

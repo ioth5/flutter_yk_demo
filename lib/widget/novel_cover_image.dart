@@ -12,13 +12,18 @@ class NovelCoverImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Image(
-        image: CachedNetworkImageProvider(imgUrl),
-        fit: BoxFit.cover,
-        width: width,
-        height: height,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(7.0), //弧度
+        child: Image(
+          image: CachedNetworkImageProvider(imgUrl),
+          fit: BoxFit.cover,
+          width: width,
+          height: height,
+        ),
       ),
-      decoration: BoxDecoration(border: Border.all(color: SQColor.paper)),
+      decoration: BoxDecoration(
+        border: Border.all(color: SQColor.paper),
+      ),
     );
   }
 }
