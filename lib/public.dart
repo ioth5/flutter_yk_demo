@@ -30,3 +30,4 @@ export 'package:yk_demo/util/toast_util.dart';
 export 'package:yk_demo/util/user_util.dart';
 export 'package:yk_demo/util/yk_color.dart';
 export 'package:yk_demo/util/screen.dart';
+export 'package:yk_demo/routers/routers.dart';

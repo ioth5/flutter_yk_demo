@@ -40,14 +40,39 @@ class BannerInfo {
   }
 }
 
+class MenuInfo {
+  String icon;
+  String title;
+  String color;
+  int r;
+  int g;
+  int b;
+
+  MenuInfo.fromJson(Map data) {
+    icon = data['icon'];
+    title = data['title'];
+    r = data['r'];
+    g = data['g'];
+    b = data['b'];
+  }
+}
+
 class Recmds {
   String name;
+  int style_type;
   List data;
-  // List<RecmdsData> data;
+
+  List<RecmdsData> recmdsData;
 
   Recmds.fromJson(Map res) {
     name = res['name'];
+    style_type = res['style_type'];
     data = res['data'];
+
+    recmdsData = [];
+    data.forEach((data) {
+      recmdsData.add(RecmdsData.fromJson(data));
+    });
   }
 }
 
@@ -88,7 +113,7 @@ class RecmdsData {
     is_end = data['is_end'];
     length = data['length'];
     view_number = data['view_number'];
-    tag = data['tag'];
+    desc = data['desc'];
     tag = data['tag'];
     tag_name = data['tag_name'];
     author_name = data['author_name'];
@@ -96,22 +121,5 @@ class RecmdsData {
     hot_num = data['hot_num'];
     flyleaf = data['flyleaf'];
     user_read_order = data['user_read_order'];
-  }
-}
-
-class MenuInfo {
-  String icon;
-  String title;
-  String color;
-  int r;
-  int g;
-  int b;
-
-  MenuInfo.fromJson(Map data) {
-    icon = data['icon'];
-    title = data['title'];
-    r = data['r'];
-    g = data['g'];
-    b = data['b'];
   }
 }

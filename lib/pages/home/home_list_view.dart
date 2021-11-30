@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:yk_demo/pages/home/home_banner.dart';
 import 'package:dio/dio.dart';
 import 'package:yk_demo/pages/home/home_menu.dart';
+import 'package:yk_demo/pages/home/novel_first_hybird_card.dart';
+import 'package:yk_demo/pages/home/novel_four_grid_view.dart';
+import 'package:yk_demo/pages/home/novel_normal_card.dart';
 import 'package:yk_demo/public.dart';
 import 'package:yk_demo/util/toast.dart';
 
 import 'home_model.dart';
+import 'novel_second_hybird_card.dart';
 
 enum HomeListType {
   excellent,
@@ -27,9 +31,10 @@ class HomeListView extends StatefulWidget {
 
 class HomeListViewState extends State<HomeListView>
     with AutomaticKeepAliveClientMixin {
-  List<BannerInfo> banner = [];
   HomeModule homeModule;
+  List<BannerInfo> banners = [];
   List<MenuInfo> menus = [];
+  List<Recmds> recmds = [];
   int pageIndex = 1;
 
   @override
@@ -43,69 +48,61 @@ class HomeListViewState extends State<HomeListView>
 
   Future<void> fetchData() async {
     try {
-      var action;
-      switch (this.widget.type) {
-        case HomeListType.excellent:
-          action = 'home_excellent';
-          break;
-        case HomeListType.female:
-          action = 'home_female';
-          break;
-        case HomeListType.male:
-          action = 'home_male';
-          break;
-        case HomeListType.cartoon:
-          action = 'home_cartoon';
-          break;
-        default:
-          break;
-      }
+      // icons
+      var menu = [
+        {
+          "icon": Constant.ASSETS_IMG + "biaoqian.png",
+          "title": '标签找书',
+          "r": 93,
+          "g": 163,
+          "b": 243,
+        },
+        {
+          "icon": Constant.ASSETS_IMG + "hongbao.png",
+          "title": '排行榜',
+          "r": 255,
+          "g": 142,
+          "b": 96
+        },
+        {
+          "icon": Constant.ASSETS_IMG + "paihang.png",
+          "title": '红包广场',
+          "r": 242,
+          "g": 106,
+          "b": 130
+        },
+      ];
+
       FormData formData = FormData.fromMap({"sex": 0});
       DioManager.getInstance().get(ServiceUrl.indexV2, formData, (data) {
         var responseJson = data;
         var moduleData = responseJson['data'];
         // 处理 banner 数据
-        var banners = moduleData['banners'];
-        List<BannerInfo> banner = [];
+        var banner = moduleData['banners'];
+        // 处理 recmd 数据
+        var recmd = moduleData['recmds'];
 
-        banners.forEach((data) {
-          banner.add(BannerInfo.fromJson(data));
-        });
-        // icons
-        var menu = [
-          {
-            "icon": Constant.ASSETS_IMG + "biaoqian.png",
-            "title": '标签找书',
-            "r": 93,
-            "g": 163,
-            "b": 243,
-          },
-          {
-            "icon": Constant.ASSETS_IMG + "hongbao.png",
-            "title": '排行榜',
-            "r": 255,
-            "g": 142,
-            "b": 96
-          },
-          {
-            "icon": Constant.ASSETS_IMG + "paihang.png",
-            "title": '红包广场',
-            "r": 242,
-            "g": 106,
-            "b": 130
-          },
-        ];
-
+        List<BannerInfo> banners = [];
+        List<Recmds> recmds = [];
         List<MenuInfo> menus = [];
+
+        banner.forEach((data) {
+          banners.add(BannerInfo.fromJson(data));
+        });
+
         menu.forEach((data) {
           menus.add(MenuInfo.fromJson(data));
         });
 
+        recmd.forEach((data) {
+          recmds.add(Recmds.fromJson(data));
+        });
+
         setState(() {
           this.homeModule = HomeModule.fromJson(moduleData);
-
-          this.banner = banner;
+          this.banners = banners;
           this.menus = menus;
+          this.recmds = recmds;
         });
       }, (error) {
         print("接口异常：" + error);
@@ -117,20 +114,54 @@ class HomeListViewState extends State<HomeListView>
     }
   }
 
+  Widget bookCardWithInfo(Recmds recmds) {
+    Widget card;
+    switch (recmds.style_type) {
+      case 1:
+        card = NovelNormalCard(recmds);
+        // card = NovelFirstHybirdCard(recmds);
+        // card = NovelFourGridView(recmds);
+        break;
+      case 2:
+        card = NovelSecondHybirdCard(recmds);
+        break;
+      case 3:
+        // card = NovelFirstHybirdCard(recmds);
+        break;
+      case 4:
+        // card = NovelNormalCard(recmds);
+        break;
+    }
+    return card;
+  }
+
+  Widget buildModule(Recmds recmds) {
+    if (recmds != null) {
+      return bookCardWithInfo(recmds);
+    }
+
+    return Container();
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    if (banner == null) {
+    if (banners == null) {
       return Container();
     }
+
     return Container(
       child: RefreshIndicator(
         onRefresh: fetchData,
         child: ListView(
+          // shrinkWrap: true,
           padding: EdgeInsets.only(top: 0),
           children: <Widget>[
-            HomeBanner(banner),
+            HomeBanner(banners),
             HomeMenu(menus),
+            Column(
+              children: recmds.map((item) => buildModule(item)).toList(),
+            ),
           ],
         ),
       ),
