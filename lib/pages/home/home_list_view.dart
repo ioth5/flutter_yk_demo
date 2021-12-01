@@ -7,6 +7,7 @@ import 'package:yk_demo/pages/home/novel_four_grid_view.dart';
 import 'package:yk_demo/pages/home/novel_normal_card.dart';
 import 'package:yk_demo/public.dart';
 import 'package:yk_demo/util/toast.dart';
+import 'package:yk_demo/widget/loading_container.dart';
 
 import 'home_model.dart';
 import 'novel_second_hybird_card.dart';
@@ -17,10 +18,10 @@ enum HomeListType {
   female,
   cartoon,
 }
+bool isRefreshloading = true;
 
 class HomeListView extends StatefulWidget {
   HomeListView(this.type);
-
   final HomeListType type;
 
   @override
@@ -103,6 +104,7 @@ class HomeListViewState extends State<HomeListView>
           this.banners = banners;
           this.menus = menus;
           this.recmds = recmds;
+          isRefreshloading = false;
         });
       }, (error) {
         print("接口异常：" + error);
@@ -151,7 +153,8 @@ class HomeListViewState extends State<HomeListView>
       return Container();
     }
 
-    return Container(
+    return LoadingContainer(
+      isLoading: isRefreshloading,
       child: RefreshIndicator(
         onRefresh: fetchData,
         child: ListView(

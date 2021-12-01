@@ -5,9 +5,12 @@ import 'package:yk_demo/pages/home/home_model.dart';
 
 import 'package:yk_demo/public.dart';
 import 'package:yk_demo/util/toast.dart';
+import 'package:yk_demo/widget/loading_container.dart';
 
 import 'circleItem.dart';
 import 'circle_model.dart';
+
+bool isRefreshloading = true;
 
 class CircleListView extends StatefulWidget {
   @override
@@ -62,6 +65,7 @@ class CircleListViewState extends State<CircleListView>
 
         setState(() {
           this.circles = circles;
+          isRefreshloading = false;
         });
       }, (error) {
         print("接口异常：" + error);
@@ -83,7 +87,8 @@ class CircleListViewState extends State<CircleListView>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return Container(
+    return LoadingContainer(
+      isLoading: isRefreshloading,
       child: RefreshIndicator(
         onRefresh: fetchData,
         child: ListView(
