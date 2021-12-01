@@ -95,7 +95,7 @@ class CircleListViewState extends State<CircleListView>
           // shrinkWrap: true,
           padding: EdgeInsets.only(top: 0),
           children: <Widget>[
-            HomeBanner(banners),
+            // HomeBanner(banners),
             Column(
               children: circles.map((item) => buildModule(item)).toList(),
             ),
