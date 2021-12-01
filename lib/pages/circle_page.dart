@@ -35,60 +35,67 @@ class _CirclePageState extends State<CirclePage> {
                 height: 45,
                 color: Color(0xffffffff),
                 alignment: Alignment.center,
-                child: TabBar(
-                    isScrollable: true,
-                    indicatorColor: Color(0xffffffff),
-                    labelColor: Color.fromRGBO(51, 51, 51, 1),
-                    unselectedLabelColor: Color.fromRGBO(102, 102, 102, 1),
-                    labelStyle:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
-                    unselectedLabelStyle: TextStyle(fontSize: 16.0),
-                    indicatorSize: TabBarIndicatorSize.label,
-                    controller: _controller,
-                    tabs: [
-                      new Tab(
-                        text: _tabValues[0],
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TabBar(
+                        isScrollable: true,
+                        unselectedLabelStyle: TextStyle(fontSize: 16.0),
+                        labelColor: SQColor.darkGray,
+                        labelStyle: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                        unselectedLabelColor: SQColor.gray,
+                        indicatorColor: Color.fromRGBO(253, 120, 150, 1),
+                        indicatorSize: TabBarIndicatorSize.label,
+                        indicatorWeight: 3,
+                        indicatorPadding: EdgeInsets.fromLTRB(8, 0, 8, 5),
+                        controller: _controller,
+                        tabs: [
+                          new Tab(
+                            text: _tabValues[0],
+                          ),
+                          new Tab(
+                            text: _tabValues[1],
+                          ),
+                          new Tab(
+                            text: _tabValues[2],
+                          ),
+                          new Tab(
+                            text: _tabValues[3],
+                          ),
+                          new Tab(
+                            text: _tabValues[4],
+                          ),
+                          new Tab(
+                            text: _tabValues[5],
+                          ),
+                          new Tab(
+                            text: _tabValues[6],
+                          ),
+                        ],
                       ),
-                      new Tab(
-                        text: _tabValues[1],
-                      ),
-                      new Tab(
-                        text: _tabValues[2],
-                      ),
-                      new Tab(
-                        text: _tabValues[3],
-                      ),
-                      new Tab(
-                        text: _tabValues[4],
-                      ),
-                      new Tab(
-                        text: _tabValues[5],
-                      ),
-                      new Tab(
-                        text: _tabValues[6],
-                      ),
-                    ]),
+                    ),
+                    Image.asset(
+                      Constant.ASSETS_IMG + "cirlce_all_icon.png",
+                      width: 22,
+                      height: 22,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                  ],
+                ),
               ),
             ],
-          ),
-          Container(
-            height: 0.5,
-            color: Color(0xffBECBC2),
           ),
           new Expanded(
             child: TabBarView(
               controller: _controller,
               children: <Widget>[
                 CircleListView(),
-                Center(
-                  child: Text("暂无数据2"),
-                ),
-                Center(
-                  child: Text("暂无数据3"),
-                ),
-                Center(
-                  child: Text("暂无数据4"),
-                ),
+                CircleListView(),
+                CircleListView(),
+                CircleListView(),
                 Center(
                   child: Text("暂无数据5"),
                 ),

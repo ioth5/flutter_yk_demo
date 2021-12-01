@@ -1,4 +1,4 @@
-class CirlceModule {
+class CircleModel {
   int id;
   int user_id;
   int user_type;
@@ -12,16 +12,14 @@ class CirlceModule {
   int add_time;
   int comment_num;
   int like_num;
-  int type;
   List tags;
   int user_author_id;
   String medal_url;
-  String novel;
 
   List<PicInfo> pic;
   List<TagInfo> tag;
 
-  CirlceModule.fromJson(Map data) {
+  CircleModel.fromJson(Map data) {
     id = data['id'];
     user_id = data['user_id'];
     user_type = data['user_type'];
@@ -35,23 +33,19 @@ class CirlceModule {
     add_time = data['add_time'];
     comment_num = data['comment_num'];
     like_num = data['like_num'];
-    type = data['type'];
     tags = data['tags'];
     user_author_id = data['user_author_id'];
     medal_url = data['medal_url'];
-    novel = data['novel'];
 
     pic = [];
-    if (pics.length != 0) {
+    if (pics != null) {
       pics.forEach((data) {
         pic.add(PicInfo.fromJson(data));
       });
     }
 
-    tags = data['tags'];
-
     tag = [];
-    if (tags.length != 0) {
+    if (tags != null) {
       tags.forEach((t) {
         tag.add(TagInfo.fromJson(t));
       });
@@ -70,11 +64,9 @@ class PicInfo {
 }
 
 class TagInfo {
-  int id;
   String name;
 
   TagInfo.fromJson(Map data) {
-    id = data['id'];
     name = data['name'];
   }
 }

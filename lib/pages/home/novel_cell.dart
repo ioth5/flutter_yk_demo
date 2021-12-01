@@ -60,7 +60,7 @@ class NovelCell extends StatelessWidget {
   Widget buildTags() {
     var tags = recmdsData.tags;
 
-    if (tags.length == 0) {
+    if (tags == null) {
       return Container();
     }
 

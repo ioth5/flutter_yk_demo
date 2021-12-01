@@ -13,7 +13,7 @@ class NovelFirstHybirdCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var recmd = recmds.recmdsData;
-    if (recmd.length == 0) {
+    if (recmd == null) {
       return Container();
     }
 

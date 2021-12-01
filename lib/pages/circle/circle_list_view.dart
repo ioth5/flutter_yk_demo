@@ -6,6 +6,7 @@ import 'package:yk_demo/pages/home/home_model.dart';
 import 'package:yk_demo/public.dart';
 import 'package:yk_demo/util/toast.dart';
 
+import 'circleItem.dart';
 import 'circle_model.dart';
 
 class CircleListView extends StatefulWidget {
@@ -19,7 +20,7 @@ class CircleListViewState extends State<CircleListView>
     with AutomaticKeepAliveClientMixin {
   int pageIndex = 1;
   List<BannerInfo> banners = [];
-  List<CirlceModule> modules = [];
+  List<CircleModel> circles = [];
 
   @override
   void initState() {
@@ -34,8 +35,8 @@ class CircleListViewState extends State<CircleListView>
     try {
       // banner
       FormData formData1 = FormData.fromMap({"position_id": '1'});
-      DioManager.getInstance().get(ServiceUrl.banners, formData1, (data) {
-        var banner = data['data'];
+      DioManager.getInstance().get(ServiceUrl.banners, formData1, (res) {
+        var banner = res['data'];
         List<BannerInfo> banners = [];
         banner.forEach((data) {
           banners.add(BannerInfo.fromJson(data));
@@ -50,15 +51,17 @@ class CircleListViewState extends State<CircleListView>
       // 列表数据
       FormData formData =
           FormData.fromMap({"p": 1, "source_page": 'forum_tag_group'});
-      DioManager.getInstance().get(ServiceUrl.forumPosts, formData, (data) {
-        List moduleData = data['data'];
-        List<CirlceModule> modules = [];
+      DioManager.getInstance().get(ServiceUrl.forumPosts, formData, (res) {
+        var data = res['data'];
+        var moduleData = data['data'];
+        List<CircleModel> circles = [];
+
         moduleData.forEach((data) {
-          modules.add(CirlceModule.fromJson(data));
+          circles.add(CircleModel.fromJson(data));
         });
 
         setState(() {
-          this.modules = modules;
+          this.circles = circles;
         });
       }, (error) {
         print("接口异常：" + error);
@@ -66,6 +69,14 @@ class CircleListViewState extends State<CircleListView>
     } catch (e) {
       Toast.show(e.toString());
     }
+  }
+
+  Widget buildModule(CircleModel circles) {
+    if (circles != null) {
+      return CircleItem(circles);
+    }
+
+    return Container();
   }
 
   @override
@@ -80,6 +91,9 @@ class CircleListViewState extends State<CircleListView>
           padding: EdgeInsets.only(top: 0),
           children: <Widget>[
             HomeBanner(banners),
+            Column(
+              children: circles.map((item) => buildModule(item)).toList(),
+            ),
           ],
         ),
       ),

@@ -121,7 +121,7 @@ class RecmdsData {
     tags = data['tags'];
 
     tagInfo = [];
-    if (tags.length != 0) {
+    if (tags != null) {
       tags.forEach((t) {
         tagInfo.add(TagInfo.fromJson(t));
       });

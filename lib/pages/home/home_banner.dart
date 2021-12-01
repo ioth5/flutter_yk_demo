@@ -11,7 +11,7 @@ class HomeBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (banner.length == 0) {
+    if (banner == null) {
       return SizedBox();
     }
 
