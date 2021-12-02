@@ -170,6 +170,10 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: Text('登录'),
         elevation: 0.0,
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back_ios, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [

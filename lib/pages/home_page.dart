@@ -11,26 +11,40 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           title: Container(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
-            child: TabBar(
-              labelColor: SQColor.darkGray,
-              labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              unselectedLabelColor: SQColor.gray,
-              indicatorColor: Color.fromRGBO(253, 120, 150, 1),
-              indicatorSize: TabBarIndicatorSize.label,
-              indicatorWeight: 3,
-              indicatorPadding: EdgeInsets.fromLTRB(8, 0, 8, 5),
-              tabs: [
-                Tab(text: '纯爱'),
-                Tab(text: '言情'),
-                Tab(text: '快穿'),
-                Tab(text: 'ABO'),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TabBar(
+                    labelColor: SQColor.darkGray,
+                    labelStyle:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    unselectedLabelColor: SQColor.gray,
+                    indicatorColor: Color.fromRGBO(253, 120, 150, 1),
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicatorWeight: 3,
+                    indicatorPadding: EdgeInsets.fromLTRB(8, 0, 8, 5),
+                    isScrollable: true,
+                    tabs: [
+                      Tab(text: '纯爱'),
+                      Tab(text: '言情'),
+                    ],
+                  ),
+                ),
+                Image.asset(
+                  Constant.ASSETS_IMG + "home_search.png",
+                  width: 22,
+                  height: 22,
+                ),
               ],
             ),
+          ),
+          flexibleSpace: Image(
+            image: AssetImage(Constant.ASSETS_IMG + 'home_top_title_bg.png'),
+            fit: BoxFit.cover,
           ),
           backgroundColor: SQColor.white,
           elevation: 0,
@@ -39,8 +53,6 @@ class HomePageState extends State<HomePage> {
           children: [
             HomeListView(HomeListType.excellent),
             HomeListView(HomeListType.female),
-            HomeListView(HomeListType.male),
-            HomeListView(HomeListType.cartoon),
           ],
         ),
       ),

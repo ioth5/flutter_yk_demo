@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:yk_demo/public.dart';
+import 'package:yk_demo/util/app_navigator.dart';
 
 import 'home_page.dart';
 import 'mine_page.dart';
@@ -82,27 +83,27 @@ class _IndexPageState extends State<IndexPage> {
   Widget build(BuildContext context) {
     initData();
     final List<BottomNavigationBarItem> bottomTabs = [
-      // ignore: deprecated_member_use
-      BottomNavigationBarItem(icon: getTabIcon(0), title: getTabTitle(0)),
-      // ignore: deprecated_member_use
-      BottomNavigationBarItem(icon: getTabIcon(1), title: getTabTitle(1)),
-      // ignore: deprecated_member_use
-      BottomNavigationBarItem(icon: getTabIcon(2), title: getTabTitle(2)),
-      // ignore: deprecated_member_use
-      BottomNavigationBarItem(icon: getTabIcon(3), title: getTabTitle(3)),
-      // ignore: deprecated_member_use
-      BottomNavigationBarItem(icon: getTabIcon(4), title: getTabTitle(4)),
+      BottomNavigationBarItem(icon: getTabIcon(0), label: '书城'),
+      BottomNavigationBarItem(icon: getTabIcon(1), label: '书架'),
+      BottomNavigationBarItem(icon: getTabIcon(2), label: '发文'),
+      BottomNavigationBarItem(icon: getTabIcon(3), label: '甜甜圈'),
+      BottomNavigationBarItem(icon: getTabIcon(4), label: '我的'),
     ];
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        selectedItemColor: Color.fromRGBO(253, 120, 150, 1),
+        selectedFontSize: 12,
         currentIndex: _tabIndex,
         items: bottomTabs,
         onTap: (index) async {
           setState(() {
             _tabIndex = index;
+            if (_tabIndex == 2) {
+              AppNavigator.pushLogin(context);
+            }
             currentPage = tabBodies[_tabIndex];
           });
         },

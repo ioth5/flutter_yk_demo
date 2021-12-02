@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yk_demo/pages/mine/login_page.dart';
 import 'package:yk_demo/pages/novel_detail/novel_detail_scene.dart';
 import 'package:yk_demo/pages/reader/reader_scene.dart';
 
@@ -10,6 +11,12 @@ class AppNavigator {
         builder: (BuildContext context) => scene,
       ),
     );
+  }
+
+  static pushLogin(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return LoginPage();
+    }));
   }
 
   static pushNovelDetail(BuildContext context, id) {
