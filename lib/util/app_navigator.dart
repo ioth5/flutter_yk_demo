@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yk_demo/model/novel.dart';
 import 'package:yk_demo/pages/novel_detail/novel_detail_scene.dart';
 import 'package:yk_demo/pages/reader/reader_scene.dart';
 
