@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yk_demo/pages/home/home_model.dart';
 
 import 'package:yk_demo/public.dart';
+import 'package:yk_demo/util/app_navigator.dart';
 import 'package:yk_demo/widget/novel_cover_image.dart';
 
 class NovelCell extends StatelessWidget {
@@ -12,7 +13,10 @@ class NovelCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // AppNavigator.pushNovelDetail(context, novel);
+        // Routes.navigateTo(context, Routes.novelDetailPage, params: {
+        //   'novelid': '1',
+        // });
+        AppNavigator.pushNovelDetail(context, '1');
       },
       child: Container(
         padding: EdgeInsets.all(15),

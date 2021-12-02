@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:yk_demo/util/yk_color.dart';
 
+import 'chapter.dart';
+
 class Novel {
   String id;
   String name;
   String imgUrl;
   String firstChapter;
-
+  Chapter lastChapter;
   String author;
   double price;
   double score;
@@ -29,7 +31,9 @@ class Novel {
     name = data['bookname'];
     imgUrl = data['book_cover'];
     firstChapter = data['topic_first'];
-
+    if (data['lastChapter'] != null) {
+      lastChapter = Chapter.fromJson(data['lastChapter']);
+    }
     score = data['score'];
     author = data['author_name'];
     price = double.parse(data['price'] ?? '0');

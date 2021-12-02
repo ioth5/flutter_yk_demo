@@ -10,6 +10,7 @@ class Routes {
   static String settingPage = '/settingpage';
   static String dispatchPage = '/dispatchPage';
   static String circlePage = '/circlePage';
+  static String novelDetailPage = '/novelDetailPage';
 
   static void configureRoutes(FluroRouter router) {
     // List widgetDemosList = new WidgetDemoList().getDemos();
@@ -29,6 +30,7 @@ class Routes {
     router.define(settingPage, handler: settingPageHandler);
     router.define(loginPage, handler: loginPageHandler);
     router.define(settingPage, handler: settingPageHandler);
+    router.define(novelDetailPage, handler: novelDetailPageHandler);
   }
 
   // 对参数进行encode，解决参数中有特殊字符，影响fluro路由匹配(https://www.jianshu.com/p/e575787d173c)
