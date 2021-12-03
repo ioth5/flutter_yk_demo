@@ -1,8 +1,8 @@
-# flutter学习
+# flutter学习下项目，仿小说app
 
 
 
-### 1.环境安装
+### 一、环境安装
 ```
 cd $HOME
 vim ~/.bash_profile
@@ -41,21 +41,36 @@ export PATH=$PATH:/Users/my/flutter_sdk/flutter/bin
 在文件末尾设置追加设置flutter bin目录路径为环境变量：
 ```
 
-#### 模拟器启动命令
+### 二、模拟器启动命令
 ```
 1. open -a Simulator // 检测模拟器
 2. flutter run 。    // 启动应用
 3. flutter packages get // 初始化项目
 ```
-##### flutter 布局（Flutter布局机制的核心就是widget）重点是什么?
-###### 1.Widgets 是用于构建UI的类.
-###### 2.Widgets 用于布局和UI元素.
-###### 3.通过简单的widget来构建复杂的widget
 
 
 
-## 2. flutter 包的安装与更新 https://flutterchina.club/using-packages/
+
+### 三、 flutter 包的安装与更新 https://flutterchina.club/using-packages/
 ```
 1.flutter packages get
 2.flutter packages upgrade // 升级到软件包的新版本
 ```
+
+### 四、项目截图 screen shot for iOS
+
+ **首页模块、书架、tab3**
+ 
+<img src="https://ycmalloss.hznmd.com/images/novel/index.png" width=200 height=450/><img src="https://ycmalloss.hznmd.com/images/novel/tab2.png" width=200 height=450/><img src="https://ycmalloss.hznmd.com/images/novel/tab3.png" width=200 height=450/>
+
+
+
+
+
+**搜索、我的**
+ 
+<img src="https://ycmalloss.hznmd.com/images/novel/search.png" width=200 height=450/><img src="https://ycmalloss.hznmd.com/images/novel/mine.png" width=200 height=450/><img src="https://ycmalloss.hznmd.com/images/novel/detail.png" width=200 height=450/>
+
+## 最后
+##### 如果你喜欢这个项目，欢迎给我一个star。我将持续更新这个项目
+##### 本项目开发过程中参考了 https://github.com/huanxsd/flutter_shuqi
