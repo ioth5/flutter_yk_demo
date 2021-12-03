@@ -28,11 +28,6 @@ var loginPageHandler = new Handler(
   return LoginPage();
 });
 
-var settingPageHandler = new Handler(
-    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  return SettingPage();
-});
-
 var novelDetailPageHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   String novelid = params["novelid"]?.first;

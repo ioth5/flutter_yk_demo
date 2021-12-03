@@ -171,7 +171,11 @@ class _LoginPageState extends State<LoginPage> {
         title: Text('登录'),
         elevation: 0.0,
         leading: new IconButton(
-          icon: new Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: new Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 16,
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         flexibleSpace: Container(

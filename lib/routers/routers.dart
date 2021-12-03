@@ -7,7 +7,7 @@ class Routes {
   static String indexPage = '/indexpage';
   static String bookshelfPage = '/bookshelfPage';
   static String loginPage = '/loginpage';
-  static String settingPage = '/settingpage';
+
   static String dispatchPage = '/dispatchPage';
   static String circlePage = '/circlePage';
   static String novelDetailPage = '/novelDetailPage';
@@ -25,9 +25,9 @@ class Routes {
     router.define(bookshelfPage, handler: bookshelfPageHandler);
     router.define(dispatchPage, handler: dispatchPageHandler);
     router.define(circlePage, handler: CirclePageHandler);
-    router.define(settingPage, handler: settingPageHandler);
+
     router.define(loginPage, handler: loginPageHandler);
-    router.define(settingPage, handler: settingPageHandler);
+
     router.define(novelDetailPage, handler: novelDetailPageHandler);
     router.define(readerPage, handler: readerPageHandler);
 

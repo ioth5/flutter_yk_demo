@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// import 'package:yk_demo/public.dart';
-
 class DispatchPage extends StatefulWidget {
   @override
   _DispatchPageState createState() => _DispatchPageState();

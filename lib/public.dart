@@ -23,7 +23,6 @@ export 'package:yk_demo/pages/reader/reader_scene.dart';
 import 'package:yk_demo/pages/search/search_page.dart';
 
 export 'package:yk_demo/pages/mine/login_page.dart';
-export 'package:yk_demo/pages/mine/setting_page.dart';
 
 export 'package:yk_demo/routers/Application.dart';
 export 'package:yk_demo/routers/router_handler.dart';

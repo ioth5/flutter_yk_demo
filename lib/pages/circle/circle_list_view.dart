@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:yk_demo/pages/home/home_banner.dart';
 import 'package:yk_demo/pages/home/home_model.dart';
 
 import 'package:yk_demo/public.dart';

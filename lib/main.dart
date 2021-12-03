@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 
     return Container(
       child: MaterialApp(
-          title: "HRL微博",
+          title: "小说",
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primaryColor: Colors.white,
