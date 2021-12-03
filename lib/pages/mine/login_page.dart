@@ -174,7 +174,7 @@ class _LoginPageState extends State<LoginPage> {
           icon: new Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
-            size: 16,
+            size: 20,
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
