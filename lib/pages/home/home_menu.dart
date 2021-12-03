@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yk_demo/public.dart';
 import 'home_model.dart';
 
 class HomeMenu extends StatelessWidget {
@@ -13,12 +14,12 @@ class HomeMenu extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: infos.map((info) => menuItem(info)).toList(),
+        children: infos.map((info) => menuItem(context, info)).toList(),
       ),
     );
   }
 
-  Widget menuItem(MenuInfo info) {
+  Widget menuItem(context, MenuInfo info) {
     return Column(
       children: <Widget>[
         Container(
@@ -31,7 +32,10 @@ class HomeMenu extends StatelessWidget {
           ),
           alignment: Alignment.center,
           child: TextButton(
-            onPressed: null,
+            onPressed: () {
+              Routes.navigateTo(context, Routes.searchPage,
+                  transition: TransitionType.native);
+            },
             child: Container(
               padding: EdgeInsets.only(right: 34),
               child: Text(

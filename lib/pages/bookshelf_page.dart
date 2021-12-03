@@ -123,41 +123,50 @@ class BookshelfState extends State<BookshelfPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                DecoratedBox(
-                  child: Image.asset(
-                    Constant.ASSETS_IMG + "book_pic.jpeg",
-                    width: 80,
-                    height: 107,
+            GestureDetector(
+              onTap: () {
+                Routes.navigateTo(context, Routes.novelDetailPage,
+                    transition: TransitionType.native,
+                    params: {
+                      'novelid': '1',
+                    });
+              },
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  DecoratedBox(
+                    child: Image.asset(
+                      Constant.ASSETS_IMG + "book_pic.jpeg",
+                      width: 80,
+                      height: 107,
+                    ),
+                    decoration: BoxDecoration(boxShadow: Styles.borderShadow),
                   ),
-                  decoration: BoxDecoration(boxShadow: Styles.borderShadow),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        '天空是蔚蓝色',
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      buildTags(),
-                      Text(
-                        '这里只显示这里只显示一排简介文案字舒服烤红一排简介文案字舒服烤红...',
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 14, color: SQColor.gray),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          '天空是蔚蓝色',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        buildTags(),
+                        Text(
+                          '这里只显示这里只显示一排简介文案字舒服烤红一排简介文案字舒服烤红...',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontSize: 14, color: SQColor.gray),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
             SizedBox(height: 15),
             DashLine(
@@ -182,7 +191,7 @@ class BookshelfState extends State<BookshelfPage> {
                       // SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          '今日已签到，还可领取糖豆哦！',
+                          '今日已签到，可领取糖豆哦！',
                           style: TextStyle(fontSize: 16),
                         ),
                       ),

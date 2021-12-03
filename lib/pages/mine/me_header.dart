@@ -12,40 +12,46 @@ class MeHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
-              children: [
-                CircleAvatar(
-                  radius: 40,
-                  backgroundImage:
-                      AssetImage('assets/images/default_person_icon.png'),
-                ),
-                SizedBox(
-                  width: 25.0,
-                ),
-                Expanded(
-                    child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '登录点击此处',
-                      style: TextStyle(fontSize: 18.0),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                  ],
-                ))
-              ],
+            GestureDetector(
+              onTap: () {
+                Routes.navigateTo(context, Routes.loginPage,
+                    transition: TransitionType.native);
+              },
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundImage:
+                        AssetImage('assets/images/default_person_icon.png'),
+                  ),
+                  SizedBox(
+                    width: 25.0,
+                  ),
+                  Expanded(
+                      child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '登录点击此处',
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                    ],
+                  ))
+                ],
+              ),
             ),
             SizedBox(height: 20),
-            buildItems(),
+            buildItems(context),
           ],
         ),
       ),
     );
   }
 
-  Widget buildItems() {
+  Widget buildItems(context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -64,7 +70,10 @@ class MeHeader extends StatelessWidget {
           ),
           alignment: Alignment.center,
           child: TextButton(
-            onPressed: null,
+            onPressed: () {
+              Routes.navigateTo(context, Routes.loginPage,
+                  transition: TransitionType.native);
+            },
             child: Text(
               '充值',
               strutStyle:

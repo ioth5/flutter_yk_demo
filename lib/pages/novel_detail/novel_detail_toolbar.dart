@@ -16,44 +16,55 @@ class NovelDetailToolbar extends StatelessWidget {
       padding: EdgeInsets.only(bottom: Screen.bottomSafeHeight),
       decoration:
           BoxDecoration(color: Colors.white, boxShadow: Styles.borderShadow),
-      height: 50 + Screen.bottomSafeHeight,
-      child: Row(children: <Widget>[
-        Expanded(
-          child: Center(
-            child: Text(
-              '加书架',
-              style: TextStyle(fontSize: 16, color: SQColor.primary),
+      height: 70 + Screen.bottomSafeHeight,
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            width: 15,
+          ),
+          Container(
+            width: 130,
+            height: 45,
+            decoration: BoxDecoration(
+                color: Color.fromRGBO(243, 243, 243, 1),
+                borderRadius: BorderRadius.circular(23)),
+            child: Center(
+              child: Text(
+                '加书架',
+                style: TextStyle(fontSize: 16, color: SQColor.gray),
+              ),
             ),
           ),
-        ),
-        Expanded(
-          child: GestureDetector(
-            onTap: () {
-              AppNavigator.pushReader(context, novel.firstArticleId);
-            },
-            child: Container(
-              height: 40,
-              decoration: BoxDecoration(
-                  color: SQColor.primary,
-                  borderRadius: BorderRadius.circular(5)),
-              child: Center(
-                child: Text(
-                  '开始阅读',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+          SizedBox(
+            width: 18,
+          ),
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                AppNavigator.pushReader(context, novel.firstArticleId);
+              },
+              child: Container(
+                height: 45,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      Color.fromRGBO(253, 120, 150, 1),
+                      Color.fromRGBO(235, 129, 181, 1),
+                    ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+                    borderRadius: BorderRadius.circular(23)),
+                child: Center(
+                  child: Text(
+                    '开始阅读',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        Expanded(
-          child: Center(
-            child: Text(
-              '下载',
-              style: TextStyle(fontSize: 16, color: SQColor.primary),
-            ),
+          SizedBox(
+            width: 15,
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yk_demo/model/mine_model.dart';
+import 'package:yk_demo/public.dart';
 
 class MeRecord extends StatelessWidget {
   final List<MineModel> modules;
@@ -66,7 +67,9 @@ class MeRecord extends StatelessWidget {
               //子Widget宽高比例
               childAspectRatio: 1,
               //子Widget列表
-              children: modules.map((info) => getItemContainer(info)).toList(),
+              children: modules
+                  .map((info) => getItemContainer(context, info))
+                  .toList(),
             ),
           ],
         ),
@@ -74,26 +77,32 @@ class MeRecord extends StatelessWidget {
     );
   }
 
-  Widget getItemContainer(MineModel info) {
+  Widget getItemContainer(context, MineModel info) {
     return Container(
       alignment: Alignment.center,
-      child: Column(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(bottom: 9),
-            child: Image.asset(
-              info.pic,
-              width: 22,
-              height: 22,
+      child: GestureDetector(
+        onTap: () {
+          Routes.navigateTo(context, Routes.loginPage,
+              transition: TransitionType.native);
+        },
+        child: Column(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(bottom: 9),
+              child: Image.asset(
+                info.pic,
+                width: 22,
+                height: 22,
+              ),
             ),
-          ),
-          Container(
-            child: Text(
-              info.name,
-              style: TextStyle(fontSize: 13, color: Colors.black),
+            Container(
+              child: Text(
+                info.name,
+                style: TextStyle(fontSize: 13, color: Colors.black),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

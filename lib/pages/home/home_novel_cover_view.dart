@@ -14,7 +14,6 @@ class HomeNovelCoverView extends StatelessWidget {
     var width = (Screen.width - 15 * 2 - 15 * 3) / 4;
     return GestureDetector(
       onTap: () {
-        print('11111');
         Routes.navigateTo(context, Routes.novelDetailPage,
             transition: TransitionType.native,
             params: {

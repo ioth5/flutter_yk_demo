@@ -25,11 +25,17 @@ class HomeBanner extends StatelessWidget {
               return Container(
                 width: Screen.width,
                 margin: EdgeInsets.symmetric(horizontal: 5.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(7),
-                  child: Image.network(
-                    info.pic_url ?? '',
-                    fit: BoxFit.cover,
+                child: GestureDetector(
+                  onTap: () {
+                    Routes.navigateTo(context, Routes.searchPage,
+                        transition: TransitionType.native);
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(7),
+                    child: Image.network(
+                      info.pic_url ?? '',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               );

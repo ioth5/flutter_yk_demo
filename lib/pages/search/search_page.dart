@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:yk_demo/pages/search/search_hot.dart';
 
 import 'package:yk_demo/public.dart';
-import 'package:yk_demo/util/styles.dart';
-
-import 'package:yk_demo/util/toast.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -15,21 +13,9 @@ class _SearchPageState extends State<SearchPage> {
   ScrollController scrollController = ScrollController();
   TextEditingController textEditer = TextEditingController();
 
-  double navAlpha = 1;
-
   @override
   void initState() {
     super.initState();
-
-    fetchData();
-  }
-
-  Future<void> fetchData() async {
-    try {
-      setState(() {});
-    } catch (e) {
-      Toast.show(e.toString());
-    }
   }
 
   Widget buildActions() {
@@ -43,7 +29,6 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ),
       ),
-      SizedBox(width: 15)
     ]);
   }
 
@@ -75,38 +60,51 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget buildNavigationBar() {
-    return Stack(
-      children: <Widget>[
-        Positioned(
-          right: 0,
-          child: Container(
-            margin: EdgeInsets.fromLTRB(5, Screen.topSafeHeight, 0, 0),
-            child: buildActions(),
+    return Container(
+      child: Row(
+        children: <Widget>[
+          new IconButton(
+            padding: EdgeInsets.all(0),
+            alignment: Alignment.centerLeft,
+            icon: new Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+              size: 20,
+            ),
+            onPressed: () => Navigator.of(context).pop(),
           ),
+          Expanded(
+            flex: 1,
+            child: buildText(),
+          ),
+          SizedBox(
+            width: 15,
+          ),
+          buildActions(),
+        ],
+      ),
+    );
+  }
+
+  Widget buildHotSearch() {
+    return Column(
+      children: [
+        SizedBox(
+          height: 30,
         ),
-        Opacity(
-          opacity: navAlpha,
-          child: Container(
-            padding: EdgeInsets.fromLTRB(5, Screen.topSafeHeight, 0, 0),
-            height: Screen.navigationBarHeight,
-            color: SQColor.white,
-            child: Row(
-              children: <Widget>[
-                new IconButton(
-                  icon: new Icon(Icons.arrow_back_ios, color: Colors.black54),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: buildText(),
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                buildActions(),
-              ],
+        Container(
+          padding: EdgeInsets.only(left: 15, right: 15),
+          child: Text(
+            '热门搜索',
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(51, 51, 51, 1),
             ),
           ),
+        ),
+        SizedBox(
+          height: 25,
         ),
       ],
     );
@@ -115,20 +113,24 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black,
+          size: 0.1,
+        ),
+        leading: null,
+        automaticallyImplyLeading: false,
+        title: buildNavigationBar(),
+        backgroundColor: SQColor.white,
+        elevation: 0,
+      ),
       backgroundColor: SQColor.white,
-      body: AnnotatedRegion(
-        value: SystemUiOverlayStyle.light,
-        child: Stack(children: [
-          RefreshIndicator(
-            onRefresh: fetchData,
-            child: ListView(
-              padding: EdgeInsets.only(top: Screen.navigationBarHeight),
-              controller: scrollController,
-              children: <Widget>[],
-            ),
-          ),
-          buildNavigationBar(),
-        ]),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildHotSearch(),
+          SearchHotContent(),
+        ],
       ),
     );
   }
