@@ -23,6 +23,7 @@ class NovelCoverImage extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         border: Border.all(color: SQColor.paper),
+        borderRadius: BorderRadius.circular(7.0), //弧度
       ),
     );
   }
