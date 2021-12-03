@@ -11,6 +11,8 @@ class Routes {
   static String dispatchPage = '/dispatchPage';
   static String circlePage = '/circlePage';
   static String novelDetailPage = '/novelDetailPage';
+  static String readerPage = '/readerPage';
+  static String searchPage = '/searchPage';
 
   static void configureRoutes(FluroRouter router) {
     // List widgetDemosList = new WidgetDemoList().getDemos();
@@ -19,10 +21,6 @@ class Routes {
             // ignore: missing_return
             (BuildContext context, Map<String, List<String>> params) {});
 
-    /*  router.define(home, handler: homeHandler);
-
-    router.define('/category/:type', handler: categoryHandler);
-    router.define('/category/error/404', handler: widgetNotFoundHandler);*/
     router.define(indexPage, handler: indexPageHandler);
     router.define(bookshelfPage, handler: bookshelfPageHandler);
     router.define(dispatchPage, handler: dispatchPageHandler);
@@ -31,6 +29,9 @@ class Routes {
     router.define(loginPage, handler: loginPageHandler);
     router.define(settingPage, handler: settingPageHandler);
     router.define(novelDetailPage, handler: novelDetailPageHandler);
+    router.define(readerPage, handler: readerPageHandler);
+
+    router.define(searchPage, handler: searchPageHandler);
   }
 
   // 对参数进行encode，解决参数中有特殊字符，影响fluro路由匹配(https://www.jianshu.com/p/e575787d173c)

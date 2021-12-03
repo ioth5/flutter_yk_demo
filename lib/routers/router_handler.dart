@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:yk_demo/pages/search/search_page.dart';
+
 import 'package:yk_demo/public.dart';
 
 var indexPageHandler = new Handler(
@@ -36,4 +38,16 @@ var novelDetailPageHandler = new Handler(
   String novelid = params["novelid"]?.first;
 
   return NovelDetailScene(novelid);
+});
+
+var readerPageHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+  String articleid = params["articleid"]?.first;
+
+  return ReaderScene(articleId: int.parse(articleid));
+});
+
+var searchPageHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return SearchPage();
 });

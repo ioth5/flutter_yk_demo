@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:yk_demo/public.dart';
-import 'package:yk_demo/util/app_navigator.dart';
+
 import 'package:yk_demo/widget/novel_cover_image.dart';
 
 import 'home_model.dart';
@@ -15,10 +15,11 @@ class NovelGridItem extends StatelessWidget {
     var width = (Screen.width - 15 * 2 - 15) / 2;
     return GestureDetector(
       onTap: () {
-        // Routes.navigateTo(context, Routes.novelDetailPage, params: {
-        //   'novelid': '1',
-        // });
-        AppNavigator.pushNovelDetail(context, '1');
+        Routes.navigateTo(context, Routes.novelDetailPage,
+            transition: TransitionType.native,
+            params: {
+              'novelid': '1',
+            });
       },
       child: Container(
         width: width,

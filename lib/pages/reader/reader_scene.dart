@@ -292,7 +292,7 @@ class ReaderSceneState extends State<ReaderScene> with RouteAware {
 
     return Scaffold(
       body: AnnotatedRegion(
-        value: SystemUiOverlayStyle.dark,
+        value: SystemUiOverlayStyle.light,
         child: Stack(
           children: <Widget>[
             Positioned(

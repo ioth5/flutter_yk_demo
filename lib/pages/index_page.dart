@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:yk_demo/public.dart';
-import 'package:yk_demo/util/app_navigator.dart';
 
 import 'home_page.dart';
 import 'mine_page.dart';
@@ -102,7 +101,8 @@ class _IndexPageState extends State<IndexPage> {
           setState(() {
             _tabIndex = index;
             if (_tabIndex == 2) {
-              AppNavigator.pushLogin(context);
+              Routes.navigateTo(context, Routes.loginPage,
+                  transition: TransitionType.native);
             }
             currentPage = tabBodies[_tabIndex];
           });

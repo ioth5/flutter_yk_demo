@@ -288,7 +288,7 @@ class BookshelfState extends State<BookshelfPage> {
     return Scaffold(
       backgroundColor: SQColor.white,
       body: AnnotatedRegion(
-        value: SystemUiOverlayStyle.dark,
+        value: SystemUiOverlayStyle.light,
         child: Stack(children: [
           RefreshIndicator(
             onRefresh: fetchData,

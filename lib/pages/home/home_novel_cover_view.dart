@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yk_demo/pages/home/home_model.dart';
 
 import 'package:yk_demo/public.dart';
-import 'package:yk_demo/util/app_navigator.dart';
+
 import 'package:yk_demo/widget/novel_cover_image.dart';
 
 class HomeNovelCoverView extends StatelessWidget {
@@ -15,10 +15,11 @@ class HomeNovelCoverView extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         print('11111');
-        // Routes.navigateTo(context, Routes.novelDetailPage, params: {
-        //   'novelid': '1',
-        // });
-        AppNavigator.pushNovelDetail(context, '1');
+        Routes.navigateTo(context, Routes.novelDetailPage,
+            transition: TransitionType.native,
+            params: {
+              'novelid': '1',
+            });
       },
       child: Container(
         width: width,

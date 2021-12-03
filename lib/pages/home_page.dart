@@ -34,10 +34,16 @@ class HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                Image.asset(
-                  Constant.ASSETS_IMG + "home_search.png",
-                  width: 22,
-                  height: 22,
+                InkWell(
+                  child: Image.asset(
+                    Constant.ASSETS_IMG + "home_search.png",
+                    width: 22,
+                    height: 22,
+                  ),
+                  onTap: () {
+                    Routes.navigateTo(context, Routes.searchPage,
+                        transition: TransitionType.native);
+                  },
                 ),
               ],
             ),
