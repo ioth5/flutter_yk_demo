@@ -554,7 +554,7 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
                     ],
                   ),
                 ),
-                // NovelDetailToolbar(novel),
+                NovelDetailToolbar(),
               ],
             ),
             buildNavigationBar(),
