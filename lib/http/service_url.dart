@@ -12,6 +12,8 @@ class ServiceUrl {
   static String banners = Constant.baseUrl + 'api/v1/banners'; // 甜甜圈banner数据
   static String forumPosts = Constant.baseUrl + 'api/v1/forumPosts'; // 甜甜圈列表数据
 
+  static String novelDetail = Constant.baseUrl + 'api/v1/novel/detail'; // 小说详情
+
   /// ------------------------------- old -----------------------------
   static String login = Constant.baseUrl + 'manage/hrluser/login.do'; // 登录
 

@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:yk_demo/model/novel.dart';
 
 import 'package:yk_demo/public.dart';
 import 'package:yk_demo/util/app_navigator.dart';
 import 'package:yk_demo/util/styles.dart';
 
 class NovelDetailToolbar extends StatelessWidget {
-  final Novel novel;
-  NovelDetailToolbar(this.novel);
-
   read() {}
   @override
   Widget build(BuildContext context) {
@@ -41,7 +37,7 @@ class NovelDetailToolbar extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                AppNavigator.pushReader(context, novel.firstArticleId);
+                AppNavigator.pushReader(context, 1);
               },
               child: Container(
                 height: 45,

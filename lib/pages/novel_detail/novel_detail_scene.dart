@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yk_demo/model/novel.dart';
 import 'package:yk_demo/model/novel_comment.dart';
+import 'package:dio/dio.dart';
 
 import 'package:yk_demo/public.dart';
 import 'package:yk_demo/util/styles.dart';
@@ -24,7 +25,7 @@ class NovelDetailScene extends StatefulWidget {
 }
 
 class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
-  Novel novel;
+  NovelInfo novelInfo;
   List<Novel> recommendNovels = [];
   List<NovelComment> comments = [];
   ScrollController scrollController = ScrollController();
@@ -78,89 +79,103 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
     try {
       var novelId = this.widget.novelId;
 
-      var novelResponse = {
-        "bid": "1945",
-        "bookname": "逆天神医",
-        "comment_count": "486547",
-        "book_cover":
-            "http://img-tailor.11222.cn/bcv/big/201901031812421599.jpg",
-        "authorId": "2914205",
-        "author_name": "月亮不发光",
-        "hide": false,
-        "shelfStatus": "1",
-        "coverIsOpen": true,
-        "readIsOpen": true,
-        "stat_name": "完结",
-        "listIsOpen": true,
-        "wordCount": 437.29,
-        "score": 4.9,
-        "state": "1",
-        "classId": "122",
-        "class_name": "都市异能",
-        "chapterNum": "2111",
-        "lastInsTime": 1546697715,
-        "payMode": "3",
-        "price": "0.5",
-        "first_article_id": 1000,
-        "tag": ["神医", "医术", "都市生活"],
-        "introduction":
-            "【年度神作】真正的神医是什么？是会杀人的神医！\r\n杀一人，救百人，杀不杀？\r\n杀！\r\n这是一个不一样的神医；他妙手回春，有人将他的名字刻在长生牌位之上，日夜供奉。\r\n他受人唾骂，有人恨不得将他剥皮抽筋，日夜诅咒。\r\n他左擒济世壶，一手金针渡人苦海；他右持杀生剑，一剑送人断头台。\r\n可救人病，亦可要人命！\r\n",
-        "firstChapter": {
-          "id": 719306,
-          "title": "第一章落魄青年",
-          "updateTime": 1479970514,
-          "shortContUrlSuffix": ""
-        },
-        "lastChapter": {
-          "id": 1096632,
-          "title": "第二千一百一十一章红尘仙劫（上）",
-          "updateTime": 1546697715,
-          "shortContUrlSuffix": ""
-        },
-        "disType": 3,
-        "disInfo": {"isBuyAll": false, "minDiscount": "88"},
-        "miguInfo": {},
-        "extraDiscount": 10,
-        "userMonthlyType": 3,
-        "serverTime": 1546752139,
-        "topClass": "502",
-        "shareCoverUrl": "http://d.shuqi.com/1_5doSc",
-        "formats": "1",
-        "weekClick": "228232",
-        "recIntro": "杀人即是救人，这么做到底是对是错，留给世人评说。一个神医的孤独之旅。",
-        "similar": "91%",
-        "intro": "",
-        "superVipEndTime": 0,
-        "isSupportVipCoupon": 1,
-        "oriIsReward": true,
-        "finalPrice": "",
-        "audiobookInfo": {"playCount": "0", "cpIntro": ""},
-        "relationBookId": 0,
-        "relationTopclass": 0,
-        "relationAudiobookId": 0,
-        "recommendTicketNum": 6643,
-        "monthTicketNum": 2325,
-        "rewardNum": 211452,
-        "rewardRank": 0,
-        "recommendTicketRank": 0,
-        "monthTicketRank": 3,
-        "cpName": "原创版权",
-        "cpId": "10091",
-        "fullDirectInfo": {},
-        "monthlyEnd": 0,
-        "limitFreeEnd": 0,
-        "isOriginBook": 2,
-        "originalInfo": {},
-        "shortContUrlPrefix":
-            "http://content.shuqireader.com/sapi/chapter/contentshort/",
-        "numClick": "228232",
-        "readFeatureOpt": "0",
-        "isBuy": false,
-        "isReward": true,
-        "isMonthlyBook": false,
-        "isSupportRecommendTicket": true,
-        "isSupportMonthTicket": true
-      };
+      FormData formData = FormData.fromMap(
+          {"novel_id": novelId, "click_source": "index_recmd"});
+      DioManager.getInstance().get(ServiceUrl.novelDetail, formData, (data) {
+        var recommendResponse = data['data'];
+        var novelInfo = recommendResponse['novel'];
+        setState(() {
+          this.novelInfo = NovelInfo.fromJson(novelInfo);
+        });
+      }, (error) {
+        print("接口异常：" + error);
+        // ToastUtil.show(error);
+        setState(() {});
+      });
+
+      // var novelResponse = {
+      //   "bid": "1945",
+      //   "bookname": "逆天神医",
+      //   "comment_count": "486547",
+      //   "book_cover":
+      //       "http://img-tailor.11222.cn/bcv/big/201901031812421599.jpg",
+      //   "authorId": "2914205",
+      //   "author_name": "月亮不发光",
+      //   "hide": false,
+      //   "shelfStatus": "1",
+      //   "coverIsOpen": true,
+      //   "readIsOpen": true,
+      //   "stat_name": "完结",
+      //   "listIsOpen": true,
+      //   "wordCount": 437.29,
+      //   "score": 4.9,
+      //   "state": "1",
+      //   "classId": "122",
+      //   "class_name": "都市异能",
+      //   "chapterNum": "2111",
+      //   "lastInsTime": 1546697715,
+      //   "payMode": "3",
+      //   "price": "0.5",
+      //   "first_article_id": 1000,
+      //   "tag": ["神医", "医术", "都市生活"],
+      //   "introduction":
+      //       "【年度神作】真正的神医是什么？是会杀人的神医！\r\n杀一人，救百人，杀不杀？\r\n杀！\r\n这是一个不一样的神医；他妙手回春，有人将他的名字刻在长生牌位之上，日夜供奉。\r\n他受人唾骂，有人恨不得将他剥皮抽筋，日夜诅咒。\r\n他左擒济世壶，一手金针渡人苦海；他右持杀生剑，一剑送人断头台。\r\n可救人病，亦可要人命！\r\n",
+      //   "firstChapter": {
+      //     "id": 719306,
+      //     "title": "第一章落魄青年",
+      //     "updateTime": 1479970514,
+      //     "shortContUrlSuffix": ""
+      //   },
+      //   "lastChapter": {
+      //     "id": 1096632,
+      //     "title": "第二千一百一十一章红尘仙劫（上）",
+      //     "updateTime": 1546697715,
+      //     "shortContUrlSuffix": ""
+      //   },
+      //   "disType": 3,
+      //   "disInfo": {"isBuyAll": false, "minDiscount": "88"},
+      //   "miguInfo": {},
+      //   "extraDiscount": 10,
+      //   "userMonthlyType": 3,
+      //   "serverTime": 1546752139,
+      //   "topClass": "502",
+      //   "shareCoverUrl": "http://d.shuqi.com/1_5doSc",
+      //   "formats": "1",
+      //   "weekClick": "228232",
+      //   "recIntro": "杀人即是救人，这么做到底是对是错，留给世人评说。一个神医的孤独之旅。",
+      //   "similar": "91%",
+      //   "intro": "",
+      //   "superVipEndTime": 0,
+      //   "isSupportVipCoupon": 1,
+      //   "oriIsReward": true,
+      //   "finalPrice": "",
+      //   "audiobookInfo": {"playCount": "0", "cpIntro": ""},
+      //   "relationBookId": 0,
+      //   "relationTopclass": 0,
+      //   "relationAudiobookId": 0,
+      //   "recommendTicketNum": 6643,
+      //   "monthTicketNum": 2325,
+      //   "rewardNum": 211452,
+      //   "rewardRank": 0,
+      //   "recommendTicketRank": 0,
+      //   "monthTicketRank": 3,
+      //   "cpName": "原创版权",
+      //   "cpId": "10091",
+      //   "fullDirectInfo": {},
+      //   "monthlyEnd": 0,
+      //   "limitFreeEnd": 0,
+      //   "isOriginBook": 2,
+      //   "originalInfo": {},
+      //   "shortContUrlPrefix":
+      //       "http://content.shuqireader.com/sapi/chapter/contentshort/",
+      //   "numClick": "228232",
+      //   "readFeatureOpt": "0",
+      //   "isBuy": false,
+      //   "isReward": true,
+      //   "isMonthlyBook": false,
+      //   "isSupportRecommendTicket": true,
+      //   "isSupportMonthTicket": true
+      // };
 
       var commentsResponse = [
         {
@@ -366,7 +381,7 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
       });
 
       setState(() {
-        this.novel = Novel.fromJson(novelResponse);
+        // this.novel = Novel.fromJson(novelResponse);
         this.comments = comments;
         this.recommendNovels = recommendNovels;
       });
@@ -384,7 +399,7 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
           padding: EdgeInsets.fromLTRB(5, Screen.topSafeHeight, 0, 0),
           child: GestureDetector(
               onTap: back,
-              child: Image.asset(Constant.ASSETS_IMG + 'pub_back_white.png')),
+              child: Image.asset(Constant.ASSETS_IMG + 'pub_back_gray.png')),
         ),
         Opacity(
           opacity: navAlpha,
@@ -404,7 +419,7 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
                 ),
                 Expanded(
                   child: Text(
-                    novel.name,
+                    novelInfo.title,
                     style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
@@ -428,13 +443,19 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
             padding: EdgeInsets.symmetric(vertical: 15),
             child: Row(
               children: <Widget>[
+                SizedBox(width: 15),
                 Image.asset(Constant.ASSETS_IMG + 'home_tip.png'),
-                SizedBox(width: 13),
-                Text('书友评价', style: TextStyle(fontSize: 16)),
+                Text('   书评区', style: TextStyle(fontSize: 16)),
                 Expanded(child: Container()),
-                Image.asset(Constant.ASSETS_IMG + 'detail_write_comment.png'),
-                Text('  写书评',
-                    style: TextStyle(fontSize: 14, color: SQColor.primary)),
+                Image.asset(
+                    Constant.ASSETS_IMG + 'novel_detail_addcomment.png'),
+                Text(
+                  ' 写书评',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color.fromRGBO(253, 120, 150, 1),
+                  ),
+                ),
                 SizedBox(width: 15),
               ],
             ),
@@ -449,7 +470,7 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
             padding: EdgeInsets.symmetric(vertical: 15),
             child: Center(
               child: Text(
-                '查看全部评论（${novel.commentCount}条）',
+                '查看全部评论（${novelInfo.view_number}条）',
                 style: TextStyle(fontSize: 14, color: SQColor.gray),
               ),
             ),
@@ -462,7 +483,7 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
   Widget buildTags() {
     var colors = [Color(0xFFF9A19F), Color(0xFF59DDB9), Color(0xFF7EB3E7)];
     var i = 0;
-    var tagWidgets = novel.tags.map((tag) {
+    var tagWidgets = novelInfo.tags.map((tag) {
       var color = colors[i % 3];
       var tagWidget = Container(
         decoration: BoxDecoration(
@@ -486,8 +507,13 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
-    if (this.novel == null) {
-      return Scaffold(appBar: AppBar(elevation: 0));
+    if (this.novelInfo == null) {
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: SQColor.white,
+          elevation: 0,
+        ),
+      );
     }
     return Scaffold(
       body: AnnotatedRegion(
@@ -503,23 +529,24 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
                     controller: scrollController,
                     padding: EdgeInsets.only(top: 0),
                     children: <Widget>[
-                      NovelDetailHeader(novel),
-                      NovelSummaryView(novel.introduction, isSummaryUnfold,
+                      NovelDetailHeader(novelInfo),
+                      NovelSummaryView(novelInfo?.desc, isSummaryUnfold,
                           changeSummaryMaxLines),
                       NovelDetailCell(
-                        iconName: Constant.ASSETS_IMG + 'detail_latest.png',
-                        title: '最新',
-                        subtitle: '描述',
-                        attachedWidget: Text(novel.status,
-                            style: TextStyle(
-                                fontSize: 14, color: novel.statusColor())),
+                        iconName: Constant.ASSETS_IMG + 'home_tip.png',
+                        title: '  查看目录',
+                        subtitle: '共${novelInfo.view_number}章',
+                        attachedWidget: Text(novelInfo.is_end ? '已完结' : '未完结',
+                            style: TextStyle(fontSize: 14, color: Colors.grey)),
                       ),
                       NovelDetailCell(
-                        iconName: Constant.ASSETS_IMG + 'detail_chapter.png',
-                        title: '目录',
-                        subtitle: '共${novel.chapterCount}章',
+                        iconName: Constant.ASSETS_IMG + 'home_tip.png',
+                        title: '  红包',
+                        subtitle: '',
+                        attachedWidget: Text('抢红包',
+                            style: TextStyle(fontSize: 14, color: Colors.grey)),
                       ),
-                      buildTags(),
+                      // buildTags(),
                       SizedBox(height: 10),
                       buildComment(),
                       SizedBox(height: 10),
@@ -527,7 +554,7 @@ class NovelDetailSceneState extends State<NovelDetailScene> with RouteAware {
                     ],
                   ),
                 ),
-                NovelDetailToolbar(novel),
+                // NovelDetailToolbar(novel),
               ],
             ),
             buildNavigationBar(),

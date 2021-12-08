@@ -18,7 +18,7 @@ class NovelGridItem extends StatelessWidget {
         Routes.navigateTo(context, Routes.novelDetailPage,
             transition: TransitionType.native,
             params: {
-              'novelid': '1',
+              'novelid': recmdsData.novel_id.toString(),
             });
       },
       child: Container(

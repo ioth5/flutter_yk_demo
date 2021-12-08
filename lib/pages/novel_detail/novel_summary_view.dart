@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yk_demo/public.dart';
 
 class NovelSummaryView extends StatelessWidget {
   final String summary;
@@ -20,13 +19,17 @@ class NovelSummaryView extends StatelessWidget {
           children: <Widget>[
             Text(
               summary,
-              maxLines: isUnfold ? null : 3,
-              style: TextStyle(fontSize: 14),
+              // maxLines: isUnfold ? null : 3,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+                color: Color.fromRGBO(51, 51, 51, 1),
+              ),
             ),
-            Image.asset(Constant.ASSETS_IMG + 'detail_fold_bg.png'),
-            Image.asset(isUnfold
-                ? Constant.ASSETS_IMG + 'detail_up.png'
-                : Constant.ASSETS_IMG + 'detail_down.png'),
+            // Image.asset(Constant.ASSETS_IMG + 'detail_fold_bg.png'),
+            // Image.asset(isUnfold
+            //     ? Constant.ASSETS_IMG + 'detail_up.png'
+            //     : Constant.ASSETS_IMG + 'detail_down.png'),
           ],
         ),
       ),

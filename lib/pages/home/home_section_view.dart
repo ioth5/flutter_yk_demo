@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yk_demo/public.dart';
 
 class HomeSectionView extends StatelessWidget {
   final String title;
@@ -12,8 +11,22 @@ class HomeSectionView extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(15, 15, 0, 5),
       child: Row(
         children: <Widget>[
-          Image.asset(Constant.ASSETS_IMG + 'home_tip.png'),
-          SizedBox(width: 10),
+          Container(
+            margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            width: 3,
+            height: 13,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromRGBO(253, 120, 150, 1),
+                  Color.fromRGBO(235, 129, 181, 1),
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+            ),
+          ),
+          SizedBox(width: 6),
           Text(
             '$title',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
