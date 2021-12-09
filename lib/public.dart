@@ -20,7 +20,6 @@ export 'package:yk_demo/pages/circle_page.dart';
 
 export 'package:yk_demo/pages/novel_detail/novel_detail_scene.dart';
 export 'package:yk_demo/pages/reader/reader_scene.dart';
-import 'package:yk_demo/pages/search/search_page.dart';
 
 export 'package:yk_demo/pages/mine/login_page.dart';
 

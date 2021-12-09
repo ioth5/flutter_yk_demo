@@ -13,9 +13,8 @@ dependencies:
   carousel_slider: ^2.1.0
   cached_network_image: ^2.2.0
   shared_preferences: ^0.5.7
-  flutter_webview_plugin: ^0.3.11
   share: ^0.6.4
-  fluttertoast: ^4.0.1
+  fluttertoast: ^8.0.8
   battery: ^1.0.1
   intl: ^0.16.1
   device_info: ^0.4.2

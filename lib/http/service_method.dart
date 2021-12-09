@@ -74,10 +74,12 @@ class DioManager {
       }
     } on DioError catch (error) {
       // 请求错误处理
+      // ignore: unused_local_variable
       Response errorResponse;
       if (error.response != null) {
         errorResponse = error.response;
       } else {
+        // ignore: missing_required_param
         errorResponse = new Response(statusCode: 201);
       }
       // debug模式才打印

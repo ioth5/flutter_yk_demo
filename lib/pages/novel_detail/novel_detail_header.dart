@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:yk_demo/model/novel.dart';
-import 'dart:ui' as ui;
 
 import 'package:yk_demo/public.dart';
 import 'package:yk_demo/util/utility.dart';

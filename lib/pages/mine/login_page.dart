@@ -36,8 +36,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   login() async {
-    var phone = phoneEditer.text;
-    var code = codeEditer.text;
+    // var phone = phoneEditer.text;
+    // var code = codeEditer.text;
 
     try {
       // var response = await Request.post(action: 'login', params: {
