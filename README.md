@@ -6,7 +6,7 @@
 ```
 cd $HOME
 vim ~/.bash_profile
-export PATH=/Users/用户名/lxd/flutter/bin:$PATH
+export PATH=/Users/用户名/群组/flutter/bin:$PATH
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 ```
@@ -18,7 +18,7 @@ O 转换到IOS样式
 Q 退出.
 ```
 
-### 二、模拟器启动命令
+### 二、iOS模拟器启动命令
 ```
 1. open -a Simulator // 检测模拟器
 2. flutter run 。    // 启动应用
@@ -46,7 +46,7 @@ Q 退出.
 
 **搜索、我的**
  
-<img src="https://ycmalloss.hznmd.com/images/novel/search.png" width=200 height=450/><img src="https://ycmalloss.hznmd.com/images/novel/mine.png" width=200 height=450/><img src="https://ycmalloss.hznmd.com/images/novel/detail.png" width=200 height=450/>
+<img src="https://ycmalloss.hznmd.com/images/novel/search.png" width=200 height=450/><img src="https://ycmalloss.hznmd.com/images/novel/mine.png" width=200 height=450/><img src="https://ycmalloss.hznmd.com/images/novel/detail2.png" width=200 height=450/>
 
 ## 最后
 ##### 如果你喜欢这个项目，欢迎给我一个star。我将持续更新这个项目
