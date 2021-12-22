@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yk_demo/pages/circle/view_pic.dart';
 
 import 'package:yk_demo/public.dart';
 import 'package:yk_demo/widget/novel_cover_image.dart';
@@ -20,7 +21,15 @@ class CircleItem extends StatelessWidget {
         children: <Widget>[
           _authorRow(context, circleItem),
           textContent(circleItem.content, context, isDetail),
-          _NineGrid(context, circleItem.pic),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                NinePicture(circleItem.pic, 0), // 图片集合，要显示的下标
+              );
+            },
+            child: _NineGrid(context, circleItem.pic),
+          ),
+
           Visibility(
             visible: !isDetail,
             child: Column(

@@ -1,7 +1,7 @@
 import 'package:event_bus/event_bus.dart';
 
 class Constant {
-  static const baseUrl = 'http://100.fantangxs.com/';
+  static const baseUrl = 'https://100.fantangxs.com/';
   // static const baseUrl = 'http://100.dev.fantangxs.com/';
 
   static const String ASSETS_IMG = 'assets/images/';
