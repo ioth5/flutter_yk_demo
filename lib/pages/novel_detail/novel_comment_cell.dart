@@ -45,8 +45,8 @@ class NovelCommentCell extends StatelessWidget {
             ],
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(35, 15, 15, 0),
-            child: Text(comment.content, style: TextStyle(fontSize: 16)),
+            padding: EdgeInsets.fromLTRB(35, 8, 15, 0),
+            child: Text(comment.content, style: TextStyle(fontSize: 13)),
           ),
         ],
       ),

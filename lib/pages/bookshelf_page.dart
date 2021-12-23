@@ -74,7 +74,7 @@ class BookshelfState extends State<BookshelfPage> {
                   child: Text(
                     '书架',
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
@@ -192,7 +192,7 @@ class BookshelfState extends State<BookshelfPage> {
                       Expanded(
                         child: Text(
                           '今日已签到，可领取糖豆哦！',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: 14),
                         ),
                       ),
                       SizedBox(width: 10),
