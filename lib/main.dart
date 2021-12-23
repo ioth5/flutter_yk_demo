@@ -32,6 +32,13 @@ class MyApp extends StatelessWidget {
             textTheme: TextTheme(bodyText1: TextStyle(color: SQColor.darkGray)),
           ),
           onGenerateRoute: Routes.router.generator,
+          builder: (context, widget) {
+            return MediaQuery(
+              ///设置文字大小不随系统设置改变
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: widget,
+            );
+          },
           home: SplashPage()),
     );
   }

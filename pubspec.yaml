@@ -13,7 +13,6 @@ dependencies:
   carousel_slider: ^2.1.0
   cached_network_image: ^2.2.0
   shared_preferences: ^0.5.7
-  share: ^0.6.4
   fluttertoast: ^8.0.8
   battery: ^1.0.1
   intl: ^0.16.1
@@ -24,7 +23,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   dio: ^4.0.0
-  event_bus: ^2.0.0
   fluro: ^2.0.3
 flutter:
   uses-material-design: true
